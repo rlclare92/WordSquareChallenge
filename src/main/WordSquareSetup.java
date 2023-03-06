@@ -1,51 +1,71 @@
 package main;
 
+import main.java.WordSquareAlgorithm;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class WordSquareSetup {
-    HashMap<String, List<String>> map = new HashMap<>();
 
-    public List<List<String>> wordSquareSetup(List<String> words) {
-        List<List<String>> result = new ArrayList<>();
-        createPrefixMap(words);
-        for(int i = 0; i < words.size(); i++) {
-            LinkedList<String> list = new LinkedList<>();
-            list.add(words.get(i));
-            backTrack(1, list, result, words.get(i).length());
-        }
-        System.out.println(result);
-        return result;
+    /*
+         Creates a map of the number of times a letter is in a string. abbccc would return a map of {a:1,b:2,c:3}
+     */
+    public static Map createMapofString(String string) {
+        Map letterMap = string.toLowerCase().chars().mapToObj(i -> (char) i)
+                .collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
+
+        return letterMap;
+
     }
 
-    public void backTrack(int step, LinkedList<String> list, List<List<String>> result, int n) {
-        if(list.size() == n){
-            result.add(new ArrayList<>(list));
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        for(String word : list) {
-            sb.append(word.charAt(step));
-        }
-        String prefix = sb.toString();
-        List<String> wordList = map.getOrDefault(prefix, new ArrayList<>());
-        for(String word : wordList) {
-            list.add(word);
-            backTrack(step + 1, list, result, n);
-            list.removeLast();
-        }
+    /*
+        Takes a list of Strings and concatenates them into a single string with no spaces
+    */
+    private static String stringCompressor(List list) {
+        String string = String.join(",", list).replace(",", "").toLowerCase();
+
+        return string;
     }
 
-    private void createPrefixMap(List<String> words) {
-        for(String word : words){
-            for(int i = 0; i < word.length(); i++) {
-                String prefix = word.substring(0, i);
-                map.putIfAbsent(prefix, new ArrayList<>());
-                List<String> list = map.get(prefix);
-                list.add(word);
+    /*
+Takes an array of words of the correct size and containing the correct letters and a map of the letters input by the user.
+checks if those words can form a valid wordsquare then concatenates those words and maps the resulting string.
+it checks if the maps match. if yes prints out the word and returns that wordsquare.
+ */
+    public static List<String> checkIfValidWordSquare(String[] array, Map mapA) {
+        WordSquareAlgorithm wordSquareAlgorithm = new WordSquareAlgorithm();
+
+        List<String> squareWords = new ArrayList<>();
+
+        boolean flag = false;
+
+        for (List n : wordSquareAlgorithm.wordSquares(array)) {
+
+            String string = stringCompressor(n);
+
+            Map mapB = createMapofString(string);
+
+            if (mapA.equals(mapB)) {
+                System.out.println();
+                System.out.println("Valid word square is: ");
+                System.out.println();
+
+                for (Object word : n) {
+                    System.out.println("\t" + word.toString());
+                    squareWords.add(word.toString());
+
+                    flag = true;
+                }
             }
+
         }
-    };
-}
+        if (!flag) {
+            System.out.println("Unable to create a valid word square! :( ");
+        }
+
+        return squareWords;
+
+    }
+};
