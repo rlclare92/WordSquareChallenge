@@ -11,8 +11,9 @@ public class WordSquareSetup {
 
     /*
          Creates a map of the number of times a letter is in a string. abbccc would return a map of {a:1,b:2,c:3}
+         I think the Map I used on the FindWords class could reuse here and change slightly to do the same thing.
      */
-    public static Map createMapofString(String string) {
+    public static Map createMapOfString(String string) {
         Map letterMap = string.toLowerCase().chars().mapToObj(i -> (char) i)
                 .collect(Collectors.groupingBy(Object::toString, Collectors.counting()));
 
@@ -25,14 +26,13 @@ public class WordSquareSetup {
     */
     private static String stringCompressor(List list) {
         String string = String.join(",", list).replace(",", "").toLowerCase();
-
         return string;
     }
 
     /*
-Takes an array of words of the correct size and containing the correct letters and a map of the letters input by the user.
-checks if those words can form a valid wordsquare then concatenates those words and maps the resulting string.
-it checks if the maps match. if yes prints out the word and returns that wordsquare.
+        Takes an array of words of the correct size and containing the correct letters and a map of the letters input by the user.
+        checks if those words can form a valid word square then concatenates those words and maps the resulting string.
+        it checks if the maps match. if yes prints out the word and returns that word square.
  */
     public static List<String> checkIfValidWordSquare(String[] array, Map mapA) {
         WordSquareAlgorithm wordSquareAlgorithm = new WordSquareAlgorithm();
@@ -45,7 +45,7 @@ it checks if the maps match. if yes prints out the word and returns that wordsqu
 
             String string = stringCompressor(n);
 
-            Map mapB = createMapofString(string);
+            Map mapB = createMapOfString(string);
 
             if (mapA.equals(mapB)) {
                 System.out.println();

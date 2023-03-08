@@ -1,9 +1,12 @@
 package main.java;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
+
+    /*
+    * This is the original wordSquareSetup I mention in my readMe file at point 7a.
+    * I really didn't like this one, and it used methods and ideas I wasn't very familiar with and struggle to really understand and get my head around, such as backTrack and LinkedList<>.
+    * Another issue I had with it was it didn't give the desired output I was expecting and found it very difficult to work with and try to reformat.
+    */
 
 public class OriginalWordSquareSetup {
     HashMap<String, List<String>> map = new HashMap<>();

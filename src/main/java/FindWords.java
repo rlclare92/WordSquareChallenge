@@ -56,6 +56,7 @@ public class FindWords {
                 words.add(currentWord);
             }
         }
+        System.out.println(words);
         return words;
     }
 
