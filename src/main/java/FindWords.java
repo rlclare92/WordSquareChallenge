@@ -27,7 +27,7 @@ public class FindWords {
 
     private String dictionaryPath = "src/main/resources/dictionary.txt";
 
-    public List<String> words(int maximumWordLength, String letters) throws IOException {
+    public List<String> words(int wordLength, String letters) throws IOException {
         Map<Character, Integer> lettersCountMap = getCharacterCountMap(letters);
 
         // Read file through BufferedReader as it reads each line of the file, rather than each character.
@@ -52,11 +52,10 @@ public class FindWords {
                 }
             }
             // Compare the canMakeCurrentWord is the same length as the has set as the maximum length of the square.
-            if (canMakeCurrentWord && maximumWordLength == currentWord.length()) {
+            if (canMakeCurrentWord && wordLength == currentWord.length()) {
                 words.add(currentWord);
             }
         }
-        System.out.println(words);
         return words;
     }
 

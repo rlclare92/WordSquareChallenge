@@ -19,13 +19,13 @@ public class UserInput {
     // Return input check through the dictionary for words with the same length.
     public int userNumberInput() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Please enter a numeric value for the length of the grid and hit enter once finish: ");
+        System.out.print("Please enter a integer value for the length of the grid and hit enter once finish: ");
         if (!sc.hasNextInt()) {
             String incorrectInt = sc.next();
             System.err.println(incorrectInt + " is not a number, please enter a numeric value only");
         }
-        int maximumWordLength = sc.nextInt();
-        return maximumWordLength;
+        int wordLength = sc.nextInt();
+        return wordLength;
     }
 
 
