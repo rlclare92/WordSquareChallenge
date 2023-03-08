@@ -1,6 +1,6 @@
 package test;
 
-import main.WordSquareSetup;
+import main.java.WordSquareSetup;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,5 @@
 package main.java;
 
-import main.WordSquareSetup;
-
 import java.io.IOException;
 import java.util.*;
 
