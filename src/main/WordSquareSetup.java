@@ -11,7 +11,7 @@ public class WordSquareSetup {
 
     /*
          Creates a map of the number of times a letter is in a string. abbccc would return a map of {a:1,b:2,c:3}
-         I think the Map I used on the FindWords class could reuse here and change slightly to do the same thing.
+         I think the Map I used on the FindWords class could be reused here and change slightly to do the same thing as below.
      */
     public static Map createMapOfString(String string) {
         Map letterMap = string.toLowerCase().chars().mapToObj(i -> (char) i)
