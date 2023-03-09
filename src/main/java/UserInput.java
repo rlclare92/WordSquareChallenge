@@ -12,7 +12,7 @@ import java.util.Scanner;
  *    userLettersInput Method
  *   - Place conditional statement to prevent invalid special and numeric characters being used. i.e., numbers, *, !, ., £ and ect.
  *   - Add condition statement to ensure the is enough letters the user inputs to create the word square.
- *   - Look into how to set-up unit tests with the use of the scanner class.
+ *   - Look into how to set up unit tests with the use of the scanner class.
  */
 
 public class UserInput {
